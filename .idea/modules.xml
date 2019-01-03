@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/TubeVideos.iml" filepath="$PROJECT_DIR$/TubeVideos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/firefox-tv/firefox-tv.iml" filepath="$PROJECT_DIR$/firefox-tv/firefox-tv.iml" />
+    </modules>
+  </component>
+</project>

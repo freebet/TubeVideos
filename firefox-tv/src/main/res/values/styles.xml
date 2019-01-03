@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<resources>
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:windowContentTransitions">true</item>
+
+        <item name="popupMenuStyle">@style/PopupMenu</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
+
+    <style name="AppTheme.Transparent" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="DialogTitleStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@string/font_roboto_medium</item>
+    </style>
+
+    <!-- Setting this via alertDialogStyle in AppTheme results in crashes. You need to
+         explicitly select this via "new AlertDialog.Builder(activity, R.style.DialogStyle)"
+         We need this style because the accent colour for the MainActivity is purple,
+         but we want different accents in the dialog. -->
+    <style name="DialogStyle" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="colorAccent">#FF00A4DC</item>
+        <item name="android:windowTitleStyle">@style/DialogTitleStyle</item>
+        <item name="dialogPreferredPadding">24dp</item>
+    </style>
+
+    <style name="SettingsTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorAccent">@color/colorAccentSettings</item>
+        <item name="actionButtonStyle">@style/SettingsActionButtonStyle</item>
+    </style>
+
+    <style name="SettingsActionButtonStyle" parent="@style/Widget.AppCompat.ActionButton">
+        <!-- We want 16dp of padding between (i) and "SAVE" on the "Add search engine" Toolbar.
+             Unfortunately, this Toolbar is shared across all of settings. Solutions:
+             1) (Current solution) Change the toolbar styles for all of settings
+             2) Dynamically change the styles for the Toolbar, in code, for this one Settings screen
+             3) Provide a unique toolbar for this one Settings screen
+
+             I opted for 1) because it's simple (we're pressed for time!) and no other screens have more
+             than one action button and are affected. This isn't very future proof, however.
+
+             We set paddingEnd=12dp to preserve the existing padding of the right-most action menu item to
+             the edge of the device (12dp) and set paddingStart=4dp to complete the 16dp between views.
+             We then set minWidth=0dp to avoid it's calculations affecting visible padding.
+
+             One concern I have is that paddingStart=4dp will cause the title to get too close to the
+             action menu items, but testing with German, that doesn't seem to be the case. -->
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingStart">4dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+    <style name="InfoTheme" parent="SettingsTheme">
+        <item name="android:colorBackground">?attr/colorPrimary</item>
+    </style>
+
+    <style name="PopupMenu" parent="@style/Widget.AppCompat.Light.PopupMenu">
+        <item name="overlapAnchor">true</item>
+    </style>
+
+    <style name="NavigationButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">@dimen/button_size</item>
+        <item name="android:layout_height">@dimen/button_size</item>
+        <item name="android:layout_marginEnd">24dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:background">@drawable/navigation_button_background</item>
+        <item name="android:tint">@color/tv_white</item>
+    </style>
+
+    <!-- These images won't crop or change their aspect ratio so if you modify the dimensions,
+         they need to maintain a 16:9 aspect ratio or else there will be dead-space in the ImageView. -->
+    <style name="PocketVideoMegaTileThumbnail">
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_height">84.375dp</item>
+        <item name="android:layout_marginStart">12dp</item>
+        <item name="android:layout_marginEnd">12dp</item>
+    </style>
+
+
+
+</resources>

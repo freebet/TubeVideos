@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This Source Code Form is subject to the terms of the Mozilla Public
+   - License, v. 2.0. If a copy of the MPL was not distributed with this
+   - file, You can obtain one at http://mozilla.org/MPL/2.0/. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/browserFragmentRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/browserContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <org.mozilla.focus.widget.ResizableKeyboardCoordinatorLayout
+            app:viewToHideWhenActivated="@+id/erase"
+            android:layout_marginTop="0dp"
+            android:id="@+id/main_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:clipChildren="false">
+
+            <org.mozilla.focus.iwebview.IWebView
+                android:id="@+id/webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbarThumbVertical="@drawable/scrollbar_thumb">
+                <requestFocus />
+            </org.mozilla.focus.iwebview.IWebView>
+
+        </org.mozilla.focus.widget.ResizableKeyboardCoordinatorLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/videoContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/black"
+        android:visibility="gone" />
+
+    <org.mozilla.focus.browser.cursor.CursorView
+        android:id="@+id/cursorView"
+        android:layout_width="@dimen/remote_cursor_size"
+        android:layout_height="@dimen/remote_cursor_size"
+        android:layout_gravity="top|start"
+        android:src="@drawable/cursor_full"
+        android:scaleType="centerInside"
+        />
+
+    <org.mozilla.focus.browser.FirefoxProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:focusable="false"
+        android:descendantFocusability="blocksDescendants"
+        />
+
+    <org.mozilla.focus.browser.BrowserNavigationOverlay
+        android:id="@+id/browserOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+
+<!--  add by kuan -->
+    <RelativeLayout
+        android:id="@+id/layer0_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E61717"
+        >
+
+        <LinearLayout
+            android:id="@+id/linearLayout_loadingprogress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            >
+
+            <ProgressBar
+                android:id="@+id/bar_mainpageloadingprogress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:indeterminate="true"
+                style="?android:attr/progressBarStyleSmall"
+                />
+
+            <TextView
+                android:id="@+id/textView_loadingprogress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/bar_mainpageloadingprogress"
+                android:layout_marginLeft="5dp"
+                android:textColor="#FFFFFF"
+                android:text="loading... %0"
+                />
+        </LinearLayout>
+
+    </RelativeLayout><!-- android:id="@+id/layer0" -->
+    <!--  add by kuan end-->
+
+
+</FrameLayout>
